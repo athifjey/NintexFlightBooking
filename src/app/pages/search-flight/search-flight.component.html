@@ -1,0 +1,13 @@
+<mat-card class="search-flight-form-container">
+  <app-search-form (searchForm)="searchFlight($event)"></app-search-form>
+</mat-card>
+
+<mat-card *ngIf="searchResponse">
+    <app-search-results *ngIf="searchResponse" [searchResult]="searchResponse" [searchData]="searchData">
+      </app-search-results>
+</mat-card>
+
+
+<div class="lds-container" *ngIf="loadPage">
+  <div class="lds-hourglass"></div>
+</div>

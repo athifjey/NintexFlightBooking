@@ -1,0 +1,86 @@
+<div>
+  <form [formGroup]="flightSearchForm" (ngSubmit)="onSubmit(flightSearchForm)">
+    <div fxLayout="row" fxLayoutGap="12px" fxFlex="100">
+
+      <!-- Departure input field -->
+      <div fxLayout="column" fxFlex="100" fxLayoutGap="4px">
+        <div class="form--label">FROM</div>
+        <input formControlName="departure" maxlength="3" placeholder="From city"
+        [ngClass]="{'input-error' : (flightSearchForm.get('departure').hasError('required') && flightSearchForm.get('departure').touched) 
+        || (flightSearchForm.get('departure')?.errors?.minlength && flightSearchForm.get('departure').touched)}">
+
+        <mat-error *ngIf="flightSearchForm.get('departure').hasError('required') && flightSearchForm.get('departure').touched">
+          Enter departure city
+        </mat-error>
+        <mat-error *ngIf="flightSearchForm.get('departure')?.errors?.minlength && flightSearchForm.get('departure').touched">
+          Enter minimum 3 characters
+        </mat-error>
+      </div>
+
+      <!-- Arrival input field -->
+      <div fxLayout="column" fxFlex="100" fxLayoutGap="4px">
+        <div class="form--label">TO</div>
+        <input formControlName="arrival" maxlength="3" placeholder="To city"
+        [ngClass]="{'input-error' : (flightSearchForm.get('arrival').hasError('required') && flightSearchForm.get('arrival').touched) 
+        || (flightSearchForm.get('arrival')?.errors?.minlength && flightSearchForm.get('arrival').touched)}">
+
+        <mat-error *ngIf="flightSearchForm.get('arrival').hasError('required') && flightSearchForm.get('arrival').touched">
+          Enter arrival destination
+        </mat-error><mat-error *ngIf="flightSearchForm.get('arrival')?.errors?.minlength && flightSearchForm.get('arrival').touched">
+            Enter minimum 3 characters
+          </mat-error>
+
+      </div>
+
+      <!-- Departure date input field -->
+      <div fxLayout="column" fxFlex="100" fxLayoutGap="4px">
+        <div class="form--label">DEPARTURE DATE</div>
+        <div fxLayout="row" class="datepicker-container pos-rel">
+          
+          <input matInput formControlName='depDate' [min]="today" (dateChange)="depDateChange($event, 'depDate')"
+            [matDatepicker]="depPicker" [value]="depDateValue" placeholder="dd mmm yyyy" readonly #fromDatech>
+          <div class="dateIcon">
+            <mat-datepicker-toggle matSuffix [for]="depPicker" [disableRipple]="true">
+              <img src="assets/images/calendar_icon.svg" class="datepickerIcon" alt="" matDatepickerToggleIcon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #depPicker></mat-datepicker>
+          </div>
+        </div>
+        <mat-error *ngIf="flightSearchForm.get('depDate').hasError('required') && flightSearchForm.get('depDate').touched">
+          Enter departure date
+        </mat-error>
+      </div>
+
+
+      <!-- Return date input field -->
+      <div fxLayout="column" fxFlex="100" fxLayoutGap="4px">
+        <div class="form--label">RETURN DATE</div>
+        <div fxLayout="row" class="datepicker-container pos-rel">
+
+          <input matInput formControlName='arrDate' [min]="today" (dateChange)="arrDateChange($event, 'arrDate')"
+            [matDatepicker]="arrPicker" [value]="arrDateValue" placeholder="dd mmm yyyy" readonly>
+          <div class="dateIcon">
+            <mat-datepicker-toggle matSuffix [for]="arrPicker">
+              <img src="assets/images/calendar_icon.svg" class="datepickerIcon" alt="" matDatepickerToggleIcon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #arrPicker></mat-datepicker>
+          </div>
+        </div>
+
+        <mat-error *ngIf="flightSearchForm.get('arrDate').hasError('required') && flightSearchForm.get('arrDate').touched">
+          Enter arrival date
+        </mat-error>
+
+      </div>
+
+      <!-- Action buttons -->
+      <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+          <div class="form--label"></div>
+        <button mat-raised-button type="submit" [disabled]="flightSearchForm.invalid" class="button--search">
+          Search
+        </button>
+      </div>
+
+    </div>
+  </form>
+</div>
