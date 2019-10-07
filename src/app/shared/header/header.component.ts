@@ -1,8 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
-import { CommonService } from '../../core/services/common.service';
-import { Router } from '@angular/router';
-
 export interface Profile {
   value: string;
   viewValue: string;
@@ -21,46 +18,15 @@ export class HeaderComponent implements OnInit {
   config: any;
 
   constructor(
-    private common: CommonService,
-    private router: Router
-  ) { }
+    ) { }
   loginLabel;
   ngOnInit() {
-    this.loginLabel = "ログインする";
-    // this.fetchCategories();
   }
 
   loginError() {
     alert('This feature is not available yet!');
   }
 
-  fetchCategories() {
-    // this.common.getCategories().subscribe(value => {
-    //   this.categories = value['data'];
-    // });
-  }
-
-  togglePreLogSidemenu() {
-    if (this.sideMenuState === 'close') {
-      this.sidenav.nativeElement.style.width = '240px';
-      this.sideMenuState = 'open';
-    } else if (this.sideMenuState === 'open') {
-      this.sidenav.nativeElement.style.width = '0px';
-      this.sideMenuState = 'close';
-    }
-  }
-
-  toggleClose() {
-    this.sidenav.nativeElement.style.width = '0px';
-    this.sideMenuState = 'close';
-  }
-
-  catSelect(data) {
-    this.common.setCatID(data.id);
-    this.common.setCatName(data.name)
-    this.toggleClose();
-    this.router.navigate(['/']);
-  }
 
   iconClick(data) {
     switch (data) {
@@ -69,11 +35,7 @@ export class HeaderComponent implements OnInit {
         break;
 
       case 'fb':
-        window.open("https://www.facebook.com/nintexApp/", "_blank");
-        break;
-
-      case 'cart':
-        window.alert('The shipping cart feature is coming soon');
+        window.open("https://www.facebook.com/Nintex/", "_blank");
         break;
 
       case 'notif':

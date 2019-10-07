@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../../core/services/common.service';
+import { ApiService } from '../../core/services/api.service';
 
 @Component({
   selector: 'app-search-flight',
@@ -9,13 +9,17 @@ import { CommonService } from '../../core/services/common.service';
 export class SearchFlightComponent implements OnInit {
   searchResponse: any;
   searchData: any;
+  liveNews: Object;
+  newsData: any;
 
-  constructor( private common : CommonService) { }
+  constructor( private api : ApiService) { }
   loadPage = false;
   ngOnInit() {
+    this.fetchLiveNews()
   }
 
   searchFlight(data){
+    this.loadPage = true;
     this.searchData = data;
     var formVal = {
       "DepartureAirportCode" : data.departure,
@@ -25,10 +29,17 @@ export class SearchFlightComponent implements OnInit {
     }
     var reqData = {'params':formVal};
 
-    this.common.getSearchResults(reqData).subscribe(value => {
+    this.api.getSearchResults(reqData).subscribe(value => {
         this.searchResponse = value;
+        this.loadPage = false;
       });
-    
+    }
+
+    fetchLiveNews(){
+      this.api.getLiveNews().subscribe(value => {
+        this.liveNews = value;
+        this.newsData = value['articles'];
+      });
     }
 
 }

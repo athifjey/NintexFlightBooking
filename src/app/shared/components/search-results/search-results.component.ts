@@ -12,10 +12,16 @@ export class SearchResultsComponent implements OnInit {
   currency = "$ ";
   airlineList: any = [];
   filteredAirline: any;
+  actualSearch: any;
+  loadResult = false;
+  resultCount: any = 300;
+  
+
   constructor() { }
 
   ngOnInit() {
-    console.log(this.searchResult)
+    this.actualSearch = this.searchResult;
+    // console.log(this.searchResult.length)
     this.createFilter();
   }
 
@@ -25,6 +31,14 @@ export class SearchResultsComponent implements OnInit {
         this.airlineList.push(e.AirlineName)
       }      
     });
+  }
+
+  airlineFilter(e){
+    this.loadResult=true;
+    this.searchResult = this.actualSearch.filter((f) => {
+      return f.AirlineName.includes(e);
+    });
+    setTimeout(() => {this.loadResult=false;}, 0 );    
   }
 
 }

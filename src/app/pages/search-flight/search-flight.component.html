@@ -1,11 +1,29 @@
-<mat-card class="search-flight-form-container">
-  <app-search-form (searchForm)="searchFlight($event)"></app-search-form>
-</mat-card>
+<div fxLayout="row" fxLayoutGap="16px">
 
-<mat-card *ngIf="searchResponse">
-    <app-search-results *ngIf="searchResponse" [searchResult]="searchResponse" [searchData]="searchData">
-      </app-search-results>
-</mat-card>
+  <div fxLayout="column" fxFlex="80" fxLayoutGap="16px" fxFlex.lt-lg="100">
+    <div>
+      <mat-card class="search-flight-form-container">
+        <app-search-form (searchForm)="searchFlight($event)"></app-search-form>
+      </mat-card>
+    </div>
+
+    <div>
+      <mat-card *ngIf="searchResponse && !loadPage">
+        <app-search-results *ngIf="searchResponse" [searchResult]="searchResponse" [searchData]="searchData">
+        </app-search-results>
+      </mat-card>
+    </div>
+  </div>
+
+  <div fxFlex="20" fxHide.lt-lg="true">
+    <perfect-scrollbar class="scroll-container">
+      <div *ngFor="let data of newsData">
+        <app-news-card [newsData]="data"></app-news-card>
+      </div>
+    </perfect-scrollbar>
+  </div>
+
+</div>
 
 
 <div class="lds-container" *ngIf="loadPage">

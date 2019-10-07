@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
-import { CommonService } from '../../../core/services/common.service';
 
 @Component({
   selector: 'app-search-form',
@@ -16,13 +15,11 @@ export class SearchFormComponent implements OnInit {
   depDate: any;
   arrDate: any;
 
-  constructor(private fb: FormBuilder,
-    private common: CommonService) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.loadForm();
     this.today = new Date();
-    console.log(this.today);
   }
 
   loadForm() {
@@ -44,7 +41,7 @@ export class SearchFormComponent implements OnInit {
     });
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit(form) {
     if (this.depDate > this.arrDate) {
       alert("The departure date cannot be greater than return date!")
     } else {

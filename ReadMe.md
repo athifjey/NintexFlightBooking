@@ -2,7 +2,7 @@ Release notes:
 
 App name: nintexv1
 version: 0.0.1
-Release date: 24 Sep 2019
+Release date: 08 Oct 2019
 
 Contents:
 
@@ -17,53 +17,48 @@ ________________________________________________________________________________
 I. Functional features implemented:
 
     1. Application header will have the following features
-        a. Category menu
-        b. nintex logo
-        c. Search box
-        d. Notification icon
-        e. Shopping cart
+        a. Nintex logo
+        d. Notification icon - Feature not available yet
         f. Link to nintex facebook page
         g. Link to nintex Instagram page
+    2. Flight search page is made the home page.
+    3. Input fields are : Departure city, Arrival city, Departure date and Arrival date
+    4. No of passengers field is not available in the firm.
+    5. The search form will have a Search button and reset button. 
+    6. Following validations have been implemented and unt tests have also been written for the same.
+        i. Departure and Arrival city should be max 3 characters. The field shall include only alphabets and numbers.
+        ii. No field should be left empty. 
+        iii. The departure date cannot be greater than arrival date when the search button is clicked. 
+        iv. The Search button will  be disabled if any one of the fields are invalid. 
+    7. On successful search query, the API is called and respective info is displayed in the next screen. 
+    8. All results are displayed in row airline icon, airline name, departure and arrival city names, the travelling hours and fare, with a Book button. 
+    9. There is a filter available to filter the search results based on airlines. 
+    10. Additional feature: A news ticker is provided to the right that will display live news from around the world.
+    11. The search form has been unit tested.
+    12. Features for internationalization have been implemented. 
+    13. Separate API service has been created to handle all API service calls.
 
-    2. Clicking the Menu hamburger will open a side menu with categories fetched from the service.
-    3. Clicking on a category will fetch the respective items that belong to the category. (Check 'Known issues')
-    4. Default category will be the first category of the category list, it is configurable.
-    5. Items list page has been made the default view
-    6. Item List page has been implemented as per the specifications
-    7. Hovering on the image will zoom the image by 10%.
-    8. A sold/unavailable item will bear the SOLD logo over it.
-    9. Clicking on an item will take the user to its respective Product detail page
-    10. The product detail page will bear a unique URL with query param bearing the selected ID
-    11. And product and its detail can be fetched by passing the URL with its respecive ID (For eg:http://localhost:4500/detail?id=2 )
-    12. The sold out item will be displayed with SOLD icon
-    13. The mobile view of the Product detail page will have the price and buttons displayed as overlay to the bottom.
-    14. There will be a Live News ticker on the product detail page with auto scroll set at 5 seconds. The news ticker is implemented using Google News API.
-    15. Clicking on 'Read more..' link of a news will take user to the respective news, outside the application
-    16. Selecting a category from the detail page will take the user back to Product List page.
+Browser compatibility: Use screen with width greater than 1280px. Best viewed in last 3 latest Chrome versions, can also be viewed on mobile and tablet.
 
+    
 II. Technical features:
 
     1. The application is developed using Angular 7
     2. The UI components are developed using Angular material design
     3. This is a responsive application. Flex layout has been used mixed with media queries to achieve responsiveness.
-    4. The product detail cards are implemented using Reusable components
+    4. The search form component uses reactive form.
     5. The header is implemented using mat-toolbar
     6. The routing is handled using angular router
     7. The API calls are handled using Angular HttpClient
-    8. ClickOutside directive has been used to handle click outside the side menu
-    9. convert-uts pipe has been used to convert UTC time to local time.
-    10. Animations are used for images
-    11. Custom loaders are used to hand page loading
-    12. Implemented polyfills for cross browser compatibility
-    13. A production build of the app is kept at build/nintexBuild. The main.js is rendered with ~800kb. Its an AOT build. 
-    14. The app is lightweight, sized at ~1mb.
-    15. To create a new build, run '$npm run prod-build'
+    8. convert-uts pipe has been used to convert UTC time to local time.
+    9. Custom loaders are used to hand page loading
+    10. Implemented polyfills for cross browser compatibility
+    11. A production build of the app is kept at build/nintexBuild. The main.js is rendered with ~800kb. Its an AOT build. 
+    12. The app is lightweight, sized at ~1mb.
+    13. To create a new build, run '$npm run prod-build'
      
 
 III. Known issues
-
-    1. The api server doesnot return data encoded with UTF-8 or UTF-16., hence the Japanese texts are receieved as garbage values, and the same has been displayed. Created an issue already. (https://github.com/m-rec/97065ad8e508a300c3d6d0b43600345ada74aba2/issues/3)
-    2. There will be no search box in tab and mobile view, shall be released in next version, if provided time.
 
 IV. Pre-requisites
 
@@ -74,14 +69,7 @@ To run this application, following are the pre-requisites
 
 IV. Application Deployment
 
-    To run the application, start the api-server app with the following commands
-
-    $ cd api-server
-    $ bundle install
-    $ bundle exec foreman start
-    $ open http://localhost:5000
-
-    Then run the following commands to start the Angular application
+    Run the following commands to start the Angular application
 
     $ yarn install
     $ npm run start

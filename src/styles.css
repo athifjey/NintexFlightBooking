@@ -1,3 +1,4 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 /* Global Styles */
 
 * {
@@ -135,6 +136,10 @@ input {
   outline: none;
 }
 
+.input--uppercase {
+  text-transform: uppercase;
+}
+
 mat-card {
   border-radius: 6px !important;
   -webkit-box-shadow: 0px 0px 22px 0px rgba(198, 198, 198, 0.7) !important;
@@ -172,8 +177,8 @@ mat-calendar {
   box-shadow: 0px 0px 22px 0px rgba(198, 198, 198, 0.7) !important;
   border-radius: 8px !important;
   border-radius: 8px !important;
-  border-color: blueviolet !important;
-  background: blueviolet !important;
+  border-color: #673ab7 !important;
+  background: #673ab7 !important;
   color: white !important;
 }
 
@@ -183,6 +188,7 @@ mat-calendar {
 
 mat-error {
   font-size: 10px;
+  color: #ffd740 !important;
 }
 
 .cdk-live-announcer-element {
@@ -198,6 +204,7 @@ mat-error {
 .mat-calendar-period-button {
   background: white !important;
 }
+
 /* 
 .mat-datepicker-content .mat-calendar {
   margin: auto !important;
@@ -219,6 +226,66 @@ mat-error {
   line-height: 16px !important;
 }
 
+.mat-radio-inner-circle {
+  background-color: #666666 !important;
+}
+
+.mat-radio-outer-circle {
+  border-color: #666666 !important;
+  border-radius: 10% !important;
+}
+
+.mat-radio-label-content {
+  white-space: normal !important;
+}
+
+.mat-radio-input {
+  display: none;
+}
+
+/* spinner */
+
+.lds-container {
+  min-height: 300px;
+}
+
+.lds-hourglass {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: auto;
+  position: absolute;
+  left: 49%;
+  top: 48%;
+}
+
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 6px;
+  box-sizing: border-box;
+  border: 26px solid #666;
+  border-color: rgb(255, 255, 255) #f8401c;
+  animation: lds-hourglass 1.2s infinite;
+}
+
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
 /* Header */
 
 .header--container {
@@ -227,17 +294,11 @@ mat-error {
   height: 100%;
   padding: 8px 0px;
   z-index: 20;
-  background: #bd9c7a;
+  background-image: linear-gradient(to right, #000,	#d2b6ac);
 }
 
 .header--login {
   font-size: 14px;
-}
-
-.img--menu-logo {
-  width: 36px;
-  height: auto;
-  cursor: pointer;
 }
 
 .img--nintex-logo {
@@ -251,55 +312,6 @@ mat-error {
 .img--header-logo {
   height: 24px;
   width: 24px;
-  cursor: pointer;
-}
-
-.input--search {
-  width: 100%;
-  border-radius: 25px;
-  border-color: #f9f3f3;
-  background: #ffffff;
-  cursor: pointer;
-}
-
-.search-position {
-  right: 8px;
-  top: 4px;
-}
-
-.mini-menu {
-  list-style-type: none;
-  background: #bd9c7a;
-  padding-left: 12px !important;
-}
-
-.hamburger-menu {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  overflow-x: hidden;
-  padding-top: 80px;
-  transition: 0.5s;
-  background: #bd9c7a;
-}
-
-li.menu-item {
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 4px;
-  height: 40px;
-  border-bottom: 2px gray solid;
-}
-
-li.menu-item:hover {
-  background: #ecc092;
-}
-
-.list--item {
-  padding: 8px 0px;
   cursor: pointer;
 }
 
@@ -322,16 +334,32 @@ li.menu-item:hover {
 }
 
 .datepickerIcon {
-  width: 12px;
+  width: 16px;
   height: auto;
 }
 
 .button--search {
-  background: #4d98f5;
-  color: white;
-  font-weight: bold;
-  border-radius: 4px;
+  background: #ebf54d;
+  color: white !important;
+  font-weight: bold !important;
+  border-radius: 4px !important;
   justify-content: center;
+  margin-top: 18px !important;
+  height: 34px !important;
+}
+
+.button--reset .mat-button-wrapper {
+  color: white !important;
+}
+
+.button--reset {
+  background: #f10b0b;
+  color: white !important;
+  font-weight: bold !important;
+  border-radius: 4px !important;
+  justify-content: center;
+  margin-top: 18px !important;
+  height: 34px !important;
 }
 
 .form--label {
@@ -352,6 +380,15 @@ li.menu-item:hover {
   height: auto;
 }
 
+.result-info {
+  margin: 8px 0px;
+  padding: 8px;
+  background: #ebf54d;
+  color: #f10b0b;
+  font-weight: bold;
+  width: auto;
+}
+
 .result-row {
   box-shadow: 0px 0px 22px 0px rgba(198, 198, 198, 0.7) !important;
   margin: 4px 0px;
@@ -359,11 +396,11 @@ li.menu-item:hover {
 }
 
 .results-airline-name {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .results-city-name {
-  font-size: 12px;
+  font-size: 20px;
   color: gray;
   text-transform: uppercase;
 }
@@ -378,11 +415,16 @@ li.menu-item:hover {
 }
 
 .results-price {
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .results-right-arrow {
+  width: 20px;
+}
+
+.results-left-arrow {
   width: 16px;
+  transform: rotate(180deg);
 }
 
 .results-arraw-container {
@@ -391,6 +433,10 @@ li.menu-item:hover {
 
 .results-outbound-container {
   border-right: 2px red solid;
+}
+
+.results-button--book .mat-button-wrapper {
+  color: #fff !important;
 }
 
 .example-radio-group {
