@@ -1,16 +1,16 @@
 Release notes:
-
-App name: nintexv1
-version: 0.0.1
-Release date: 08 Oct 2019
+<br />
+App name: nintexv1 <br />
+version: 0.0.1 <br />
+Release date: 08 Oct 2019 <br />
 
 Contents:
 
-I. Functional features
-II. Technical features
-III. Known issues
-IV. Pre-requisites
-V. Application deployment
+I. Functional features <br />
+II. Technical features <br />
+III. Known issues <br />
+IV. Pre-requisites <br />
+V. Application deployment <br />
 
 ________________________________________________________________________________________________
 
